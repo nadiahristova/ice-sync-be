@@ -27,6 +27,7 @@ public class WorkflowsController : ControllerBase
     /// <returns>Collection of workflows</returns>
     [HttpGet("get-all")]
     [ProducesResponseType((int)HttpStatusCode.OK)]
+    [ProducesResponseType((int)HttpStatusCode.TooManyRequests)]
     [ProducesResponseType((int)HttpStatusCode.InternalServerError)]
     public async Task<ActionResult<IEnumerable<WorkflowDto>>> GetAll(CancellationToken cancellationToken)
     {
@@ -44,6 +45,7 @@ public class WorkflowsController : ControllerBase
     /// <returns></returns>
     [HttpPost("{WorkflowId}/run")]
     [ProducesResponseType((int)HttpStatusCode.NoContent)]
+    [ProducesResponseType((int)HttpStatusCode.TooManyRequests)]
     [ProducesResponseType((int)HttpStatusCode.UnprocessableEntity)]
     [ProducesResponseType((int)HttpStatusCode.InternalServerError)]
     [Consumes("application/json")]
@@ -63,6 +65,7 @@ public class WorkflowsController : ControllerBase
     /// <returns>Collection of basic workflow execution data</returns>
     [HttpGet("executions")]
     [ProducesResponseType((int)HttpStatusCode.OK)]
+    [ProducesResponseType((int)HttpStatusCode.TooManyRequests)]
     [ProducesResponseType((int)HttpStatusCode.UnprocessableEntity)]
     [ProducesResponseType((int)HttpStatusCode.InternalServerError)]
     public async Task<ActionResult<IEnumerable<WorkflowExecutionDto>>> GetWorkflowExecutions([FromQuery] GetWorkflowExecutionsDto queryParams, CancellationToken cancellationToken)

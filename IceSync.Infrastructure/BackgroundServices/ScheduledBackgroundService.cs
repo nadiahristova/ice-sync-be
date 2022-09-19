@@ -25,7 +25,7 @@ public abstract class ScheduledBackgroundService : BackgroundService
         _schedule = CreateCronSchedule(settings.TriggerEvery);
 
         // comment to trigger the service on application run
-        _nextRun = _schedule.GetNextOccurrence(DateTime.Now);
+        // _nextRun = _schedule.GetNextOccurrence(DateTime.Now);
     }
 
     protected override async Task ExecuteAsync(CancellationToken cancellationToken)
